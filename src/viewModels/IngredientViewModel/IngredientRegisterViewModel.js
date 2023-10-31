@@ -3,7 +3,7 @@ import RNFS from 'react-native-fs';
 
 class IngredientRegisterViewModel {
 
-  saveIngredient = async ( id, name) => {
+  saveIngredient = async ( id, name ) => {
     const newIngredient = new IngredientModel( id, name );
     const path = RNFS.DownloadDirectoryPath + '/items.json';
 
@@ -38,18 +38,6 @@ class IngredientRegisterViewModel {
       await RNFS.writeFile(path, JSON.stringify(ingredients));
     } catch (error) {
       console.error('Error removing item:', error);
-    }
-  };
-
-  // excluir depois
-  deleteAll = async () => {
-    const path = RNFS.DownloadDirectoryPath + '/items.json';
-
-    try {
-      await RNFS.unlink(path);
-      console.log('Arquivo deletado');
-    } catch (error) {
-      console.log(error);
     }
   };
 }

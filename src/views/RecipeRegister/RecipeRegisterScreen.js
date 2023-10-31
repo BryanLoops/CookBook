@@ -4,13 +4,20 @@ import IngredientRegisterViewModel from '../../viewModels/IngredientViewModel/In
 import UUIDGenerator from 'react-native-uuid-generator';
 
 const IngredientRegisterScreen = ({navigation}) => {
+    // id, name, ingredients, instructions, tips
   const [name, setName] = useState('');
+  const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
+  const [tips, setTips] = useState('');
 
   const handleRegister = async () => {
     const uuid = await UUIDGenerator.getRandomUUID();
     const viewModel = new IngredientRegisterViewModel();
-    viewModel.saveIngredient( uuid, name);
+    viewModel.saveIngredient( uuid, name, ingredients, instructions, tips );
     setName('');
+    setIngredients([]);
+    setInstructions([]);
+    setTips('');
   };
 
   return (

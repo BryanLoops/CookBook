@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Button, FlatList, StyleSheet, Text } from 'react-native';
 import IngredientListViewModel from '../../viewModels/IngredientViewModel/IngredientListViewModel';
 import IngredientRegisterViewModel from '../../viewModels/IngredientViewModel/IngredientRegisterViewModel';
+import RemoveButton from '../../components/RemoveButton';
 
 const IngredientListScreen = ({ navigation }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -36,7 +37,7 @@ const IngredientListScreen = ({ navigation }) => {
         renderItem={({ item }) => (
           <View style={styles.ingredientContainer}>
             <Text>Name: {item.name}</Text>
-            <Button title="Delete" onPress={() => handleDelete(item.id)} />
+            <RemoveButton onPress={() => handleDelete(item.id)} />
           </View>
         )}
       />
